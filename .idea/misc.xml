@@ -3,11 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/SmartHouse/app/src/main/res/drawable/bg_alert_dialog.xml" value="0.2075" />
         <entry key="..\:/SmartHouse/app/src/main/res/drawable/bg_btn.xml" value="0.2075" />
+        <entry key="..\:/SmartHouse/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.2075" />
+        <entry key="..\:/SmartHouse/app/src/main/res/drawable/ic_door.xml" value="0.2075" />
+        <entry key="..\:/SmartHouse/app/src/main/res/drawable/ic_elector.xml" value="0.2075" />
         <entry key="..\:/SmartHouse/app/src/main/res/drawable/ic_enter.xml" value="0.2075" />
         <entry key="..\:/SmartHouse/app/src/main/res/drawable/ic_frame.xml" value="0.2075" />
+        <entry key="..\:/SmartHouse/app/src/main/res/drawable/ic_gate_icon.xml" value="0.2075" />
         <entry key="..\:/SmartHouse/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/SmartHouse/app/src/main/res/layout/activity_splash_screen.xml" value="0.28125" />
+        <entry key="..\:/SmartHouse/app/src/main/res/layout/dialog_change_phone_number.xml" value="0.28020833333333334" />
       </map>
     </option>
   </component>

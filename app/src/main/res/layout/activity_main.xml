@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:textStyle="bold"
         android:layout_marginTop="@dimen/padding_margin_40dp"
         android:text="Smart Home"
         android:textColor="@color/main_color"
@@ -52,11 +53,64 @@
             app:lottie_rawRes="@raw/main_home" />
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_elector"
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/padding_margin_20dp"
             android:background="@drawable/bg_btn"
             android:drawableEnd="@drawable/ic_enter"
-            android:paddingEnd="@dimen/padding_margin_10dp"
+            android:paddingVertical="@dimen/padding_margin_10dp"
+            android:drawableStart="@drawable/ic_elector"
+            android:text="Elektor"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:drawablePadding="@dimen/padding_margin_20dp"
+            android:paddingHorizontal="@dimen/padding_margin_10dp"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_doors"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/padding_margin_20dp"
+            android:background="@drawable/bg_btn"
+            android:drawableEnd="@drawable/ic_enter"
+            android:paddingVertical="@dimen/padding_margin_10dp"
+            android:drawableStart="@drawable/ic_door"
+            android:text="Eshiklar"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:drawablePadding="@dimen/padding_margin_20dp"
+            android:paddingHorizontal="@dimen/padding_margin_10dp"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_gate"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/padding_margin_20dp"
+            android:background="@drawable/bg_btn"
+            android:drawableEnd="@drawable/ic_enter"
+            android:paddingVertical="@dimen/padding_margin_10dp"
+            android:drawableStart="@drawable/ic_gate_icon"
+            android:text="Darvozalar"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:drawablePadding="@dimen/padding_margin_20dp"
+            android:paddingHorizontal="@dimen/padding_margin_10dp"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_settings"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/padding_margin_20dp"
+            android:background="@drawable/bg_btn"
+            android:drawableEnd="@drawable/ic_enter"
+            android:paddingVertical="@dimen/padding_margin_10dp"
+            android:drawableStart="@drawable/ic_baseline_settings_24"
+            android:text="Sozlanmalar"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:drawablePadding="@dimen/padding_margin_20dp"
+            android:paddingHorizontal="@dimen/padding_margin_10dp"
             android:layout_height="wrap_content" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
