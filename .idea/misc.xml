@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/SmartHouse/app/src/main/res/drawable/bg_btn.xml" value="0.2075" />
+        <entry key="..\:/SmartHouse/app/src/main/res/drawable/ic_enter.xml" value="0.2075" />
         <entry key="..\:/SmartHouse/app/src/main/res/drawable/ic_frame.xml" value="0.2075" />
         <entry key="..\:/SmartHouse/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/SmartHouse/app/src/main/res/layout/activity_splash_screen.xml" value="0.28125" />
