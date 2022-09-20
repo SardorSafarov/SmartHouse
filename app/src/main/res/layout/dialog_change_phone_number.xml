@@ -21,8 +21,8 @@
             android:layout_marginHorizontal="@dimen/padding_margin_10dp"
             android:layout_height="wrap_content">
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phone_number"
                 android:layout_width="match_parent"
-                android:text="+998 "
                 android:inputType="number"
                 android:layout_height="match_parent"/>
         </com.google.android.material.textfield.TextInputLayout>

@@ -1,13 +1,9 @@
 package com.example.zamin.smarthouse
 
 import android.Manifest.permission.*
-import android.app.PendingIntent
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
-import android.telephony.SmsManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -22,11 +18,12 @@ import com.example.zamin.smarthouse.app.d
 import com.example.zamin.smarthouse.app.statusBarColor
 import com.example.zamin.smarthouse.databinding.ActivityMainBinding
 import com.example.zamin.smarthouse.databinding.DialogChangePhoneNumberBinding
-import java.util.jar.Manifest
+import com.example.zamin.smarthouse.local.SharedPeriferensHelper
 
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
+    val sharedPeriferensHelper: SharedPeriferensHelper by lazy { SharedPeriferensHelper(this) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -35,12 +32,12 @@ class MainActivity : AppCompatActivity() {
         changePhoneNumber()
         btnSetOnClick()
         checkSendMessagePerimetion()
-
-
     }
 
     private fun checkSendMessagePerimetion() {
-        if (ContextCompat.checkSelfPermission(this, READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this,
+                READ_CONTACTS) != PackageManager.PERMISSION_GRANTED
+        ) {
             ActivityCompat.requestPermissions(this,
                 arrayOf(SEND_SMS),
                 123)
@@ -54,7 +51,7 @@ class MainActivity : AppCompatActivity() {
     private fun btnSetOnClick() {
         binding.apply {
             btnElector.setOnClickListener {
-              startActivity(Intent(this@MainActivity, ElectorActivity::class.java))
+                startActivity(Intent(this@MainActivity, ElectorActivity::class.java))
             }
             btnDoors.setOnClickListener {
                 startActivity(Intent(this@MainActivity, DoorsActivity::class.java))
@@ -71,13 +68,34 @@ class MainActivity : AppCompatActivity() {
     private fun changePhoneNumber() {
         binding.changePhoneNumber.setOnClickListener {
             val alertDialog = AlertDialog.Builder(this, R.style.CustomAlertDialog)
-
             val view = LayoutInflater.from(this).inflate(R.layout.dialog_change_phone_number, null)
             val dialogView = DialogChangePhoneNumberBinding.bind(view)
             alertDialog.setView(view)
+            val dialog = alertDialog.create()
+            dialog.show()
+            dialogView.apply {
+                btnDialogOk.setOnClickListener {
+                    if (phoneNumber.text!!.isNotEmpty()) {
+                        if (phoneNumber.text.toString().length > 8) {
+                            sharedPeriferensHelper.setPhoneNumber(phoneNumber.text.toString())
+                            Toast.makeText(this@MainActivity, "Telefon raqam kiritildi!!", Toast.LENGTH_SHORT).show()
+                        } else
+                            Toast.makeText(this@MainActivity,
+                                "Telefon raqam xato kiritildi!!",
+                                Toast.LENGTH_SHORT).show()
+                    } else
+                        Toast.makeText(this@MainActivity,
+                            "Telefon raqam kiritlmadi!!",
+                            Toast.LENGTH_SHORT).show()
+                    dialog.dismiss()
+                }
+                btnDialogNo.setOnClickListener {
+                    d("ishladi")
+                    dialog.dismiss()
+                }
+            }
 
 
-            alertDialog.show()
         }
     }
 }
