@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">SmartHouse</string>
+    <string name="app_name">Milly House</string>
+    <string name="milly_house">Milly House</string>
+    <string name="statusbar_color">#3daafc</string>
 </resources>

@@ -1,9 +1,8 @@
-package com.example.zamin.smarthouse.utils
+package com.example.zamin.smarthouse.app
 
 import android.graphics.Color
 import android.util.Log
 import android.view.Window
-import com.example.zamin.smarthouse.splashScreen.SplashScreenActivity
 
 fun d(message:String){
     Log.d("sardor", "---->  $message  <-----")

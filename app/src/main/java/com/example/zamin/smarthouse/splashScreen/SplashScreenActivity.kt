@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import com.example.zamin.smarthouse.MainActivity
 import com.example.zamin.smarthouse.databinding.ActivitySplashScreenBinding
-import com.example.zamin.smarthouse.utils.statusBarColor
+import com.example.zamin.smarthouse.app.statusBarColor
 
 class SplashScreenActivity : AppCompatActivity() {
     lateinit var binding: ActivitySplashScreenBinding
