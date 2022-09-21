@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
     private fun checkPhone():Boolean {
         if(sharedPeriferensHelper.getPhoneNumber()=="empty")
         {
-            Toast.makeText(this, "Telefon raqam qo`shing!!!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Uy ma'lumotlarini kiriting!!", Toast.LENGTH_SHORT).show()
             return false
         }else{
             return true
@@ -79,14 +79,14 @@ class MainActivity : AppCompatActivity() {
                     if (phoneNumber.text!!.isNotEmpty()) {
                         if (phoneNumber.text.toString().length > 8) {
                             sharedPeriferensHelper.setPhoneNumber(phoneNumber.text.toString())
-                            Toast.makeText(this@MainActivity, "Telefon raqam qo'shildi!!", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@MainActivity, "Raqam kiritildi!", Toast.LENGTH_SHORT).show()
                         } else
                             Toast.makeText(this@MainActivity,
-                                "Telefon raqam xato kiritildi!!",
+                                "Raqam xato kiritildi!",
                                 Toast.LENGTH_SHORT).show()
                     } else
                         Toast.makeText(this@MainActivity,
-                            "Telefon raqam kiritlmadi!!",
+                            "Raqam kiritlmadi!",
                             Toast.LENGTH_SHORT).show()
                     dialog.dismiss()
                 }

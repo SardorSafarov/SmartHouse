@@ -16,10 +16,9 @@ import com.example.zamin.smarthouse.local.SharedPeriferensHelper
 class DoorsActivity : AppCompatActivity() {
     private val sharedPeriferensHelper: SharedPeriferensHelper by lazy { SharedPeriferensHelper(this) }
     lateinit var binding: ActivityDoorsBinding
-    var door1 = true
-    var door1time = true
-    var door2 = true
-    var door2time = true
+    var door = true
+    var doortime = true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDoorsBinding.inflate(layoutInflater)
@@ -30,16 +29,16 @@ class DoorsActivity : AppCompatActivity() {
     private fun doorsOn() {
         binding.apply {
             btnDoor1.setOnClickListener {
-                door1 = checkTimeDoor1()
-                if (door1) {
+                door = checkTimeDoor()
+                if (door) {
                   doorDialog1()
                 } else {
                      toastShort(applicationContext,"Sabr")
                 }
             }
             btnDoor2.setOnClickListener {
-                door2 = checkTimeDoor2()
-                if (door2) {
+                door = checkTimeDoor()
+                if (door) {
                     doorDialog2()
                 }else
                 {
@@ -56,12 +55,12 @@ class DoorsActivity : AppCompatActivity() {
 
             setPositiveButton("Ochish"){ dialogInterface: DialogInterface, i: Int ->
                 vibirator(applicationContext)
-                toastShort(applicationContext, "Eshik ochilmoqda!")
+                toastShort(applicationContext, "1-Eshik ochilmoqda!")
                 sendSms("8g335fe2")
-                door1 = false
+                door = false
             }
             setNegativeButton("Ortga"){ dialogInterface: DialogInterface, i: Int ->
-                    toastLong(applicationContext,"Eshik ochiq qolib ketishi mumkin!")
+                    toastLong(applicationContext,"1-Eshik ochiq qolib ketishi mumkin!")
             }
             alertDialog.show()
         }
@@ -73,47 +72,32 @@ class DoorsActivity : AppCompatActivity() {
             setTitle("Siz haqiqatdan ham 2-eshik oldidamisiz?")
             setPositiveButton("Ochish"){ dialogInterface: DialogInterface, i: Int ->
                 vibirator(applicationContext)
-                toastShort(applicationContext, "Eshik ochilmoqda!")
+                toastShort(applicationContext, "2-Eshik ochilmoqda!")
                 sendSms("77tw4f0g")
-                door2 = false
+                door = false
             }
             setNegativeButton("Ortga"){ dialogInterface: DialogInterface, i: Int ->
-                toastLong(applicationContext,"Eshik ochiq qolib ketishi mumkin!")
+                toastLong(applicationContext,"2-Eshik ochiq qolib ketishi mumkin!")
             }
             alertDialog.show()
         }
     }
-    private fun checkTimeDoor1(): Boolean {
-        if (door1time) {
+    private fun checkTimeDoor(): Boolean {
+        if (doortime) {
             object : CountDownTimer(10_000, 10_000) {
                 override fun onTick(p0: Long) {
                 }
 
                 override fun onFinish() {
-                    door1 = true
-                    door1time = true
+                    door = true
+                    doortime = true
                 }
             }.start()
-            door1time = false
+            doortime = false
         }
-        return door1
+        return door
     }
 
-    private fun checkTimeDoor2(): Boolean {
-        if (door2time){
-        object : CountDownTimer(10_000, 10_000) {
-            override fun onTick(p0: Long) {
-            }
-
-            override fun onFinish() {
-                door2 = true
-                door2time = true
-            }
-        }.start()
-        door2time = false
-        }
-        return door2
-    }
 
     fun sendSms(sms: String) {
         val smsManager: SmsManager = SmsManager.getDefault()
