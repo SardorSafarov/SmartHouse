@@ -60,7 +60,7 @@
             android:drawableEnd="@drawable/ic_enter"
             android:paddingVertical="@dimen/padding_margin_10dp"
             android:drawableStart="@drawable/ic_elector"
-            android:text="Elektor"
+            android:text="Elektr"
             android:textAllCaps="false"
             android:textStyle="bold"
             android:textColor="@color/white"
@@ -111,6 +111,7 @@
             android:textColor="@color/white"
             android:drawablePadding="@dimen/padding_margin_20dp"
             android:paddingHorizontal="@dimen/padding_margin_10dp"
+            android:visibility="invisible"
             android:layout_height="wrap_content" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 

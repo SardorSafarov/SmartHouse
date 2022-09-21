@@ -1,15 +1,17 @@
 package com.example.zamin.smarthouse.activitys
 
+import android.os.*
 import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.telephony.SmsManager
-import android.widget.CompoundButton
+import com.example.zamin.smarthouse.app.toast
+import com.example.zamin.smarthouse.app.vibirator
 import com.example.zamin.smarthouse.databinding.ActivityGateBinding
 import com.example.zamin.smarthouse.local.SharedPeriferensHelper
 
 class GateActivity : AppCompatActivity() {
     private val sharedPeriferensHelper: SharedPeriferensHelper by lazy { SharedPeriferensHelper(this) }
     lateinit var binding: ActivityGateBinding
+    var time = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityGateBinding.inflate(layoutInflater)
@@ -18,19 +20,55 @@ class GateActivity : AppCompatActivity() {
     }
 
     private fun gateOnOff() {
-        binding.switchGate.setOnCheckedChangeListener({ compoundButton: CompoundButton, b: Boolean ->
-            when(b){
-                true->{
-                    // sendSms("code")
+        binding.apply {
+            btnGateOpen.setOnLongClickListener {
+                vibirator(applicationContext)
+
+                time = checkTime()
+                if (time) {
+                    btnGateOff.isLongClickable = true
+                    btnGateOpen.isLongClickable = false
+                    toast(applicationContext, "Darvoza ochilmoqda!")
+                    sendSms("X26e4a7h")
+                    time = false
+                } else {
+                    toast(applicationContext, "Sabr")
                 }
-                else->{
-                    //  sendSms("code")
-                }
+                false
             }
-        })
+            btnGateOff.setOnLongClickListener {
+                vibirator(applicationContext)
+                time = checkTime()
+                if (time) {
+                    btnGateOff.isLongClickable = false
+                    btnGateOpen.isLongClickable = true
+                    toast(applicationContext, "Darvoza yopilmoqda!")
+                    sendSms("7t1fa75u")
+                    time = false
+                } else {
+                    toast(applicationContext, "Sabr")
+                }
+                false
+            }
+        }
     }
-    fun sendSms(sms:String){
+
+    private fun checkTime(): Boolean {
+        object : CountDownTimer(10_000, 10_000) {
+            override fun onTick(p0: Long) {
+            }
+
+            override fun onFinish() {
+                time = true
+            }
+        }.start()
+        return time
+    }
+
+
+    fun sendSms(sms: String) {
         val smsManager: SmsManager = SmsManager.getDefault()
         smsManager.sendTextMessage(sharedPeriferensHelper.getPhoneNumber(), null, sms, null, null)
     }
+
 }

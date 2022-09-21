@@ -39,7 +39,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="NO"
-            android:layout_marginRight="@dimen/padding_margin_30dp"
+            android:padding="@dimen/padding_margin_10dp"
+            android:layout_marginRight="@dimen/padding_margin_20dp"
             android:textSize="@dimen/text_size_20sp"
             />
         <TextView
@@ -47,6 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="OK"
+            android:padding="@dimen/padding_margin_10dp"
             android:textSize="@dimen/text_size_20sp"
             />
     </androidx.appcompat.widget.LinearLayoutCompat>

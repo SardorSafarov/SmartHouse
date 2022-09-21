@@ -3,6 +3,9 @@ package com.example.zamin.smarthouse.activitys
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.telephony.SmsManager
+import com.example.zamin.smarthouse.app.d
+import com.example.zamin.smarthouse.app.toast
+import com.example.zamin.smarthouse.app.vibirator
 import com.example.zamin.smarthouse.databinding.ActivityDoorsBinding
 import com.example.zamin.smarthouse.local.SharedPeriferensHelper
 
@@ -18,11 +21,17 @@ class DoorsActivity : AppCompatActivity() {
 
     private fun doorsOn() {
         binding.apply {
-            btnDoor1.setOnClickListener {
-              //  sendSms("code")
+            btnDoor1.setOnLongClickListener {
+                vibirator(applicationContext)
+                toast(applicationContext,"Eshik ochilmoqda!")
+                 sendSms("8g335fe2")
+                false
             }
-            btnDoor2.setOnClickListener {
-               // sendSms("code")
+            btnDoor2.setOnLongClickListener {
+                vibirator(applicationContext)
+                toast(applicationContext,"Eshik ochilmoqda!")
+                sendSms("77tw4f0g")
+                false
             }
         }
     }

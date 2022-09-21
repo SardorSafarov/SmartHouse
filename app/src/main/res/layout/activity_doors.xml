@@ -63,6 +63,8 @@
                         app:tint="#767676" />
 
                     <TextView
+                        android:textSize="@dimen/text_size_20sp"
+                        android:layout_marginBottom="@dimen/padding_margin_10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="1-Eshik"
@@ -107,6 +109,8 @@
                         app:tint="#767676" />
 
                     <TextView
+                        android:textSize="@dimen/text_size_20sp"
+                        android:layout_marginBottom="@dimen/padding_margin_10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="2-Eshik"
