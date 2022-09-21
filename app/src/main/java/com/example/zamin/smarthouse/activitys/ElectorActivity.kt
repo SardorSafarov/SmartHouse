@@ -18,6 +18,7 @@ class ElectorActivity : AppCompatActivity() {
     private val sharedPeriferensHelper: SharedPeriferensHelper by lazy { SharedPeriferensHelper(this) }
     lateinit var binding: ActivityElectorBinding
     var time = true
+    var electorTime = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityElectorBinding.inflate(layoutInflater)
@@ -28,9 +29,9 @@ class ElectorActivity : AppCompatActivity() {
     private fun elctorOnOff() {
         binding.apply {
             btnElectorOn.setOnLongClickListener {
-                vibirator(applicationContext)
                 time = checkTime()
                 if (time) {
+                    vibirator(applicationContext)
                     btnElectorOn.isLongClickable = false
                     btnElectorOff.isLongClickable = true
                     sendSms("Yc4fw6f3")
@@ -42,9 +43,9 @@ class ElectorActivity : AppCompatActivity() {
                 false
             }
             btnElectorOff.setOnLongClickListener {
-                vibirator(applicationContext)
                 time = checkTime()
                 if (time) {
+                    vibirator(applicationContext)
                     btnElectorOn.isLongClickable = true
                     btnElectorOff.isLongClickable = false
                     sendSms("8g6r2g59")
@@ -56,19 +57,20 @@ class ElectorActivity : AppCompatActivity() {
                 false
             }
         }
-
-
     }
-
     private fun checkTime(): Boolean {
+        if (electorTime){
         object : CountDownTimer(10_000, 10_000) {
             override fun onTick(p0: Long) {
             }
 
             override fun onFinish() {
                 time = true
+                electorTime = true
             }
         }.start()
+        electorTime = false
+        }
         return time
     }
 

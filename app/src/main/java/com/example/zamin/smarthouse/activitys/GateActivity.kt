@@ -12,6 +12,7 @@ class GateActivity : AppCompatActivity() {
     private val sharedPeriferensHelper: SharedPeriferensHelper by lazy { SharedPeriferensHelper(this) }
     lateinit var binding: ActivityGateBinding
     var time = true
+    var gateTime = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityGateBinding.inflate(layoutInflater)
@@ -22,12 +23,11 @@ class GateActivity : AppCompatActivity() {
     private fun gateOnOff() {
         binding.apply {
             btnGateOpen.setOnLongClickListener {
-                vibirator(applicationContext)
-
                 time = checkTime()
                 if (time) {
-                    btnGateOff.isLongClickable = true
+                    vibirator(applicationContext)
                     btnGateOpen.isLongClickable = false
+                    btnGateOff.isLongClickable = true
                     toast(applicationContext, "Darvoza ochilmoqda!")
                     sendSms("X26e4a7h")
                     time = false
@@ -37,9 +37,9 @@ class GateActivity : AppCompatActivity() {
                 false
             }
             btnGateOff.setOnLongClickListener {
-                vibirator(applicationContext)
                 time = checkTime()
                 if (time) {
+                    vibirator(applicationContext)
                     btnGateOff.isLongClickable = false
                     btnGateOpen.isLongClickable = true
                     toast(applicationContext, "Darvoza yopilmoqda!")
@@ -54,14 +54,18 @@ class GateActivity : AppCompatActivity() {
     }
 
     private fun checkTime(): Boolean {
+        if (gateTime){
         object : CountDownTimer(10_000, 10_000) {
             override fun onTick(p0: Long) {
             }
 
             override fun onFinish() {
                 time = true
+                gateTime = true
             }
         }.start()
+        gateTime = false
+        }
         return time
     }
 

@@ -7,7 +7,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Telefon raqam qo`shish!!"
+        android:text="Milliy house raqamini kiriting!"
         android:textStyle="bold"
         android:textSize="@dimen/text_size_20sp"
         android:layout_marginTop="@dimen/padding_margin_10dp"
@@ -16,7 +16,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:hint="Telefon raqam"
+            android:hint="Raqamni kiriting"
             android:layout_marginTop="@dimen/padding_margin_20dp"
             android:layout_marginHorizontal="@dimen/padding_margin_10dp"
             android:layout_height="wrap_content">
@@ -38,7 +38,7 @@
             android:id="@+id/btn_dialog_no"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="NO"
+            android:text="Orqaga"
             android:padding="@dimen/padding_margin_10dp"
             android:layout_marginRight="@dimen/padding_margin_20dp"
             android:textSize="@dimen/text_size_20sp"
@@ -47,7 +47,7 @@
             android:id="@+id/btn_dialog_ok"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="OK"
+            android:text="Qo'shish"
             android:padding="@dimen/padding_margin_10dp"
             android:textSize="@dimen/text_size_20sp"
             />
