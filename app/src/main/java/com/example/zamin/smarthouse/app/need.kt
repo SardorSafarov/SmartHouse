@@ -16,8 +16,11 @@ fun d(message:String){
 fun statusBarColor(splashScreenActivity: Window, color:String) {
         splashScreenActivity.statusBarColor = Color.parseColor(color)
 }
-fun toast(applicationContext: Context, s: String){
+fun toastShort(applicationContext: Context, s: String){
     Toast.makeText(applicationContext, " $s", Toast.LENGTH_SHORT).show()
+}
+fun toastLong(applicationContext: Context, s: String){
+    Toast.makeText(applicationContext, " $s", Toast.LENGTH_LONG).show()
 }
 
 fun vibirator(applicationContext: Context) {

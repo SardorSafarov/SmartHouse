@@ -3,7 +3,7 @@ package com.example.zamin.smarthouse.activitys
 import android.os.*
 import androidx.appcompat.app.AppCompatActivity
 import android.telephony.SmsManager
-import com.example.zamin.smarthouse.app.toast
+import com.example.zamin.smarthouse.app.toastShort
 import com.example.zamin.smarthouse.app.vibirator
 import com.example.zamin.smarthouse.databinding.ActivityGateBinding
 import com.example.zamin.smarthouse.local.SharedPeriferensHelper
@@ -28,11 +28,11 @@ class GateActivity : AppCompatActivity() {
                     vibirator(applicationContext)
                     btnGateOpen.isLongClickable = false
                     btnGateOff.isLongClickable = true
-                    toast(applicationContext, "Darvoza ochilmoqda!")
+                    toastShort(applicationContext, "Darvoza ochilmoqda!")
                     sendSms("X26e4a7h")
                     time = false
                 } else {
-                    toast(applicationContext, "Sabr")
+                    toastShort(applicationContext, "Sabr")
                 }
                 false
             }
@@ -42,11 +42,11 @@ class GateActivity : AppCompatActivity() {
                     vibirator(applicationContext)
                     btnGateOff.isLongClickable = false
                     btnGateOpen.isLongClickable = true
-                    toast(applicationContext, "Darvoza yopilmoqda!")
+                    toastShort(applicationContext, "Darvoza yopilmoqda!")
                     sendSms("7t1fa75u")
                     time = false
                 } else {
-                    toast(applicationContext, "Sabr")
+                    toastShort(applicationContext, "Sabr")
                 }
                 false
             }

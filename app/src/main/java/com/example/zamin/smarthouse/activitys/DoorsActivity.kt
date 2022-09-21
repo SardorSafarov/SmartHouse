@@ -1,11 +1,14 @@
 package com.example.zamin.smarthouse.activitys
 
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.telephony.SmsManager
-import com.example.zamin.smarthouse.app.d
-import com.example.zamin.smarthouse.app.toast
+import androidx.appcompat.app.AlertDialog
+import com.example.zamin.smarthouse.R
+import com.example.zamin.smarthouse.app.toastLong
+import com.example.zamin.smarthouse.app.toastShort
 import com.example.zamin.smarthouse.app.vibirator
 import com.example.zamin.smarthouse.databinding.ActivityDoorsBinding
 import com.example.zamin.smarthouse.local.SharedPeriferensHelper
@@ -26,35 +29,60 @@ class DoorsActivity : AppCompatActivity() {
 
     private fun doorsOn() {
         binding.apply {
-            btnDoor1.setOnLongClickListener {
+            btnDoor1.setOnClickListener {
                 door1 = checkTimeDoor1()
                 if (door1) {
-                    vibirator(applicationContext)
-                    toast(applicationContext, "Eshik ochilmoqda!")
-                  //  sendSms("8g335fe2")
-                    door1 = false
+                  doorDialog1()
                 } else {
-                     toast(applicationContext,"Sabr")
+                     toastShort(applicationContext,"Sabr")
                 }
-                false
             }
-            btnDoor2.setOnLongClickListener {
+            btnDoor2.setOnClickListener {
                 door2 = checkTimeDoor2()
                 if (door2) {
-                    vibirator(applicationContext)
-                    toast(applicationContext, "Eshik ochilmoqda!")
-                   // sendSms("77tw4f0g")
-                    door2 = false
+                    doorDialog2()
                 }else
                 {
-                    toast(applicationContext,"Sabr")
+                    toastShort(applicationContext,"Sabr")
                 }
-                false
             }
         }
     }
 
+    private fun doorDialog1() {
+        val alertDialog = AlertDialog.Builder(this, R.style.CustomAlertDialog)
+        alertDialog.apply {
+            setTitle("Siz haqiqatdan ham 1-eshik oldidamisiz?")
 
+            setPositiveButton("Ochish"){ dialogInterface: DialogInterface, i: Int ->
+                vibirator(applicationContext)
+                toastShort(applicationContext, "Eshik ochilmoqda!")
+                sendSms("8g335fe2")
+                door1 = false
+            }
+            setNegativeButton("Ortga"){ dialogInterface: DialogInterface, i: Int ->
+                    toastLong(applicationContext,"Eshik ochiq qolib ketishi mumkin!")
+            }
+            alertDialog.show()
+        }
+    }
+
+    private fun doorDialog2() {
+        val alertDialog = AlertDialog.Builder(this, R.style.CustomAlertDialog)
+        alertDialog.apply {
+            setTitle("Siz haqiqatdan ham 2-eshik oldidamisiz?")
+            setPositiveButton("Ochish"){ dialogInterface: DialogInterface, i: Int ->
+                vibirator(applicationContext)
+                toastShort(applicationContext, "Eshik ochilmoqda!")
+                sendSms("77tw4f0g")
+                door2 = false
+            }
+            setNegativeButton("Ortga"){ dialogInterface: DialogInterface, i: Int ->
+                toastLong(applicationContext,"Eshik ochiq qolib ketishi mumkin!")
+            }
+            alertDialog.show()
+        }
+    }
     private fun checkTimeDoor1(): Boolean {
         if (door1time) {
             object : CountDownTimer(10_000, 10_000) {

@@ -4,12 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.telephony.SmsManager
-import android.widget.CompoundButton
-import android.widget.Toast
-import com.example.zamin.smarthouse.R
-import com.example.zamin.smarthouse.app.d
-import com.example.zamin.smarthouse.app.statusBarColor
-import com.example.zamin.smarthouse.app.toast
+import com.example.zamin.smarthouse.app.toastShort
 import com.example.zamin.smarthouse.app.vibirator
 import com.example.zamin.smarthouse.databinding.ActivityElectorBinding
 import com.example.zamin.smarthouse.local.SharedPeriferensHelper
@@ -35,10 +30,10 @@ class ElectorActivity : AppCompatActivity() {
                     btnElectorOn.isLongClickable = false
                     btnElectorOff.isLongClickable = true
                     sendSms("Yc4fw6f3")
-                    toast(applicationContext, "Elektr yonmoqda!")
+                    toastShort(applicationContext, "Elektr yonmoqda!")
                     time = false
                 } else {
-                    toast(applicationContext, "Sabr")
+                    toastShort(applicationContext, "Sabr")
                 }
                 false
             }
@@ -49,10 +44,10 @@ class ElectorActivity : AppCompatActivity() {
                     btnElectorOn.isLongClickable = true
                     btnElectorOff.isLongClickable = false
                     sendSms("8g6r2g59")
-                    toast(applicationContext, "Elektr o'chmoqda!")
+                    toastShort(applicationContext, "Elektr o'chmoqda!")
                     time = false
                 } else {
-                    toast(applicationContext, "Sabr")
+                    toastShort(applicationContext, "Sabr")
                 }
                 false
             }
