@@ -28,40 +28,41 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        statusBarColor(window, getString(R.string.statusbar_color))
+        checkSendMessagePerimetion()
         changePhoneNumber()
         btnSetOnClick()
-        checkSendMessagePerimetion()
+
     }
 
-    private fun checkSendMessagePerimetion() {
-        if (ContextCompat.checkSelfPermission(this,
-                READ_CONTACTS) != PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(this,
-                arrayOf(SEND_SMS),
-                123)
-        } else {
-            Toast.makeText(this,
-                "Milliy House ilovasiga sms jo`natishga ruxsat bermadinggiz!!",
-                Toast.LENGTH_SHORT).show()
-        }
-    }
+
 
     private fun btnSetOnClick() {
         binding.apply {
             btnElector.setOnClickListener {
+                if (checkPhone())
                 startActivity(Intent(this@MainActivity, ElectorActivity::class.java))
             }
             btnDoors.setOnClickListener {
+                if (checkPhone())
                 startActivity(Intent(this@MainActivity, DoorsActivity::class.java))
             }
             btnGate.setOnClickListener {
+                if (checkPhone())
                 startActivity(Intent(this@MainActivity, GateActivity::class.java))
             }
             btnSettings.setOnClickListener {
                 startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
             }
+        }
+    }
+
+    private fun checkPhone():Boolean {
+        if(sharedPeriferensHelper.getPhoneNumber()=="empty")
+        {
+            Toast.makeText(this, "Telefon raqam qo`shing!!!", Toast.LENGTH_SHORT).show()
+            return false
+        }else{
+            return true
         }
     }
 
@@ -78,7 +79,7 @@ class MainActivity : AppCompatActivity() {
                     if (phoneNumber.text!!.isNotEmpty()) {
                         if (phoneNumber.text.toString().length > 8) {
                             sharedPeriferensHelper.setPhoneNumber(phoneNumber.text.toString())
-                            Toast.makeText(this@MainActivity, "Telefon raqam kiritildi!!", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@MainActivity, "Telefon raqam qo'shildi!!", Toast.LENGTH_SHORT).show()
                         } else
                             Toast.makeText(this@MainActivity,
                                 "Telefon raqam xato kiritildi!!",
@@ -90,12 +91,25 @@ class MainActivity : AppCompatActivity() {
                     dialog.dismiss()
                 }
                 btnDialogNo.setOnClickListener {
-                    d("ishladi")
                     dialog.dismiss()
                 }
             }
 
 
+        }
+    }
+
+    private fun checkSendMessagePerimetion() {
+        if (ContextCompat.checkSelfPermission(this,
+                READ_CONTACTS) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(this,
+                arrayOf(SEND_SMS),
+                123)
+        } else {
+            Toast.makeText(this,
+                "Milliy House ilovasiga sms jo`natishga ruxsat bermadinggiz!!",
+                Toast.LENGTH_SHORT).show()
         }
     }
 }
